@@ -38,13 +38,13 @@ class DirectorsController < ApplicationController
   end
 
   def insert
-    # @first = params.fetch("first_number").to_f
+    
     @query_name = params.fetch("query_name")
     @query_dob = params.fetch("query_dob")
     @query_bio = params.fetch("query_bio")
     @query_image = params.fetch("query_image")
     
-    
-    render({ :template => "director_templates/insert" })
+    redirect_to("/directors")
   end
+
 end
