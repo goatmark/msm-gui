@@ -55,4 +55,24 @@ class DirectorsController < ApplicationController
     redirect_to("/directors")
   end
 
+  def update
+    
+    @director_id = params.fetch("director_id").to_i
+
+    # Read director row
+    d = Director.all.where({:id => @director_id})
+
+    # Retrieve inputs
+    d.name = params.fetch("query_name","")
+    d.dob = params.fetch("query_dob","")
+    d.bio = params.fetch("query_bio","")
+    d.image = params.fetch("query_image","")
+
+    # Push to database
+    d.save
+
+    # Redirect
+    redirect_to("/directors")
+  end
+
 end
