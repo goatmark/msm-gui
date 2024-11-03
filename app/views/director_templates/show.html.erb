@@ -5,13 +5,13 @@
 <a href="/directors">
   Go back
 </a><br>
-<a href="/delete_director">
+<a href="/directors/delete">
   Delete director
 </a>
 
 <hr>
 
-<form action="/update_director" method="post">
+<form action="/directors/update" method="post">
   <div>
     <label for="name_box">Name</label>
     <input type="text" id="name_box" name="query_name" value="<%=@the_director.name%>">
