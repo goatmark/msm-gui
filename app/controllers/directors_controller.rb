@@ -39,11 +39,19 @@ class DirectorsController < ApplicationController
 
   def insert
     
-    @query_name = params.fetch("query_name")
-    @query_dob = params.fetch("query_dob")
-    @query_bio = params.fetch("query_bio")
-    @query_image = params.fetch("query_image")
-    
+    # Create new director row
+    d = Director.new
+
+    # Retrieve inputs
+    d.name = params.fetch("query_name","")
+    d.dob = params.fetch("query_dob","")
+    d.bio = params.fetch("query_bio","")
+    d.image = params.fetch("query_image","")
+
+    # Push to database
+    d.save
+
+    # Redirect
     redirect_to("/directors")
   end
 

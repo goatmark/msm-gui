@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   # POST Domains
   post("/insert_director", { :controller => "directors", :action => "insert" })
+  post("/insert_movie", { :controller => "movies", :action => "insert" })
+  post("/insert_actor", { :controller => "actors", :action => "insert" })
 end
