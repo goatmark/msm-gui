@@ -37,7 +37,7 @@ class DirectorsController < ApplicationController
     render({ :template => "director_templates/eldest" })
   end
 
-  def insert
+  def create
     
     # Create new director row
     d = Director.new
@@ -70,6 +70,20 @@ class DirectorsController < ApplicationController
 
     # Push to database
     d.save
+
+    # Redirect
+    redirect_to("/directors")
+  end
+
+  def delete
+    
+    @director_id = params.fetch("director_id").to_i
+
+    # Read director row
+    d = Director.all.where({:id => @director_id})
+
+    # Push to database
+    d.delete
 
     # Redirect
     redirect_to("/directors")

@@ -15,10 +15,30 @@ class ActorsController < ApplicationController
     render({ :template => "actor_templates/show" })
   end
 
-  def insert
+  def create
     
     # Create new director row
     a = Actor.new
+
+    # Retrieve inputs
+    a.name = params.fetch("query_name","")
+    a.dob = params.fetch("query_dob","")
+    a.bio = params.fetch("query_bio","")
+    a.image = params.fetch("query_image","")
+
+    # Push to database
+    a.save
+
+    # Redirect
+    redirect_to("/actors")
+  end
+
+  def update
+    
+    @actor_id = params.fetch("actor_id").to_i
+
+    # Read director row
+    a = Actor.all.where({:id => @actor_id})
 
     # Retrieve inputs
     a.name = params.fetch("query_name","")
