@@ -56,7 +56,9 @@ class DirectorsController < ApplicationController
   end
 
   def update
-    
+
+    @director_id = params.fetch("path_id").to_i
+
     # Read director row
     d = Director.all.where({:id => @director_id})
 
@@ -70,12 +72,12 @@ class DirectorsController < ApplicationController
     d.save
 
     # Redirect
-    redirect_to("/directors/" + @director_id)
+    redirect_to("/directors/" + d.id)
   end
 
   def delete
     
-    @director_id = params.fetch("director_id").to_i
+    @director_id = params.fetch("path_id").to_i
 
     # Read director row
     d = Director.all.where({:id => @director_id})

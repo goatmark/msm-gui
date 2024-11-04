@@ -35,7 +35,7 @@ class ActorsController < ApplicationController
 
   def update
     
-    @actor_id = params.fetch("actor_id").to_i
+    @actor_id = params.fetch("path_id").to_i
 
     # Read director row
     a = Actor.all.where({:id => @actor_id})
@@ -48,6 +48,20 @@ class ActorsController < ApplicationController
 
     # Push to database
     a.save
+
+    # Redirect
+    redirect_to("/actors/" + @actor_id)
+  end
+
+  def delete
+    
+    @actor_id = params.fetch("path_id").to_i
+
+    # Read director row
+    a = Actor.all.where({:id => @actor_id})
+
+    # Push to database
+    a.delete
 
     # Redirect
     redirect_to("/actors")
