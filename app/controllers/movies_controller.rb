@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
 
   def update
     
-    @movie_id = params.fetch("path_id").to_i
+    @movie_id = params.fetch("path_id","").to_i
 
     # Read director row
     m = Movie.all.where({:id => @movie_id})
@@ -59,7 +59,7 @@ class MoviesController < ApplicationController
 
   def delete
     
-    @movie_id = params.fetch("path_id").to_i
+    @movie_id = params.fetch("path_id","").to_i
 
     # Read director row
     d = Director.all.where({:id => @director_id})

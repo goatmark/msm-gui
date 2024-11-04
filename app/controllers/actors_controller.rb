@@ -35,7 +35,7 @@ class ActorsController < ApplicationController
 
   def update
     
-    @actor_id = params.fetch("path_id").to_i
+    @actor_id = params.fetch("path_id","").to_i
 
     # Read director row
     a = Actor.all.where({:id => @actor_id})
@@ -55,7 +55,7 @@ class ActorsController < ApplicationController
 
   def delete
     
-    @actor_id = params.fetch("path_id").to_i
+    @actor_id = params.fetch("path_id","").to_i
 
     # Read director row
     a = Actor.all.where({:id => @actor_id})
