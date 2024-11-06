@@ -40,7 +40,7 @@ class MoviesController < ApplicationController
     @movie_id = params.fetch("path_id","").to_i
 
     # Read director row
-    m = Movie.all.where({:id => @movie_id})
+    m = Movie.all.where({:id => @movie_id}).at(0)
 
     # Retrieve inputs
     m.title = params.fetch("query_title","")

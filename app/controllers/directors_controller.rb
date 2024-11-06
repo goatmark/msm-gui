@@ -77,13 +77,13 @@ class DirectorsController < ApplicationController
 
   def delete
     
-    @director_id = params.fetch("path_id","").to_i
+    @director_id = params.fetch("director_id","").to_i
 
     # Read director row
-    @d = Director.all.where({:id => @director_id})
+    d = Director.all.where({:id => @director_id}).at(0)
 
-    # Push to database
-    @d.delete
+    # Delete from database
+    d.destroy
 
     # Redirect
     redirect_to("/directors")
