@@ -54,7 +54,7 @@ class MoviesController < ApplicationController
     m.save
 
     # Redirect
-    redirect_to("/movies/" + m.id)
+    redirect_to("/movies/" + @movie_id.to_s)
   end
 
   def delete

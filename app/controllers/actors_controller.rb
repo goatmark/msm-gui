@@ -39,7 +39,7 @@ class ActorsController < ApplicationController
 
     # Read director row
     a = Actor.all.where({:id => @actor_id}).at(0)
-    
+
     # Retrieve inputs
     a.name = params.fetch("query_name","")
     a.dob = params.fetch("query_dob","")
@@ -50,7 +50,7 @@ class ActorsController < ApplicationController
     a.save
 
     # Redirect
-    redirect_to("/actors/" + @actor_id)
+    redirect_to("/actors/" + @actor_id.to_s)
   end
 
   def delete

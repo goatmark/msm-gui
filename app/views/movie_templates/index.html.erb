@@ -86,7 +86,7 @@
     </td>
 
     <td>
-      <% matching_directors = Director.where({ :id => a_movie.director_id }) %>
+      <% matching_directors = Director.all.where({ :id => a_movie.director_id.to_i }) %>
       
       <% the_director = matching_directors.at(0) %>
 

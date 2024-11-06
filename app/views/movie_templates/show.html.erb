@@ -15,6 +15,7 @@
 <%if params.fetch("path_id", "") != "delete"%>
   <form action="/movies/update" method="post">
     <div>
+      <input type="hidden" name="path_id" value="<%=@the_movie.id%>">
       <label for="title_box">Title</label>
       <input type="text" id="title_box" name="query_title" value ="<%=@the_movie.title%>">
     </div>
@@ -93,7 +94,7 @@
   <dd>
     <% dir_id = @the_movie.director_id %>
     
-    <% matching_directors = Director.where({ :id => dir_id }) %>
+    <% matching_directors = Director.all.where({ :id => dir_id }) %>
     
     <% the_director = matching_directors.at(0) %>
 
