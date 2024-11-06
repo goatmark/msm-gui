@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     m.save
 
     # Redirect
-    redirect_to("/directors")
+    redirect_to("/movies")
   end
 
   def update
@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
     @movie_id = params.fetch("movie_id","").to_i
 
     # Read director row
-    m = Movie.all.where({:id => @movie_id})
+    m = Movie.all.where({:id => @movie_id}).at(0)
 
     # Push to database
     m.destroy

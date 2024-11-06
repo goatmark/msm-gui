@@ -38,8 +38,8 @@ class ActorsController < ApplicationController
     @actor_id = params.fetch("path_id","").to_i
 
     # Read director row
-    a = Actor.all.where({:id => @actor_id})
-
+    a = Actor.all.where({:id => @actor_id}).at(0)
+    
     # Retrieve inputs
     a.name = params.fetch("query_name","")
     a.dob = params.fetch("query_dob","")
@@ -58,7 +58,7 @@ class ActorsController < ApplicationController
     @actor_id = params.fetch("actor_id","").to_i
 
     # Read actor row
-    a = Actor.all.where({:id => @actor_id})
+    a = Actor.all.where({:id => @actor_id}).at(0)
 
     # Delete from database
     a.destroy
