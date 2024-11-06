@@ -60,7 +60,7 @@ class DirectorsController < ApplicationController
     @director_id = params.fetch("path_id","").to_i
 
     # Read director row
-    @d = Director.all.where({:id => @director_id})
+    @d = Director.all.where({:id => @director_id}).at(0)
 
     # Retrieve inputs
     @d.name = params.fetch("query_name","")
@@ -72,7 +72,7 @@ class DirectorsController < ApplicationController
     @d.save
 
     # Redirect
-    redirect_to("/directors/" + @d.id)
+    redirect_to("/directors/" + @d.id.to_s)
   end
 
   def delete
