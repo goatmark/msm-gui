@@ -1,3 +1,5 @@
+<%params%>
+
 <h1>
   List of all movies
 </h1>
@@ -27,7 +29,7 @@
 
   <div>
     <label for="image_box">Image</label>
-    <input type="text" id="image_box" name="query_description">
+    <input type="text" id="image_box" name="query_image">
   </div>
 
   <div>
@@ -86,11 +88,15 @@
     </td>
 
     <td>
-      <% matching_directors = Director.all.where({ :id => a_movie.director_id.to_i }) %>
+      <% matching_directors = Director.all.where({ :id => a_movie.director_id}) %>
       
       <% the_director = matching_directors.at(0) %>
 
-      <%= the_director.name %>
+      <%if the_director%>
+        <%=the_director.name%>
+      <%else%>
+        Uh oh! We couldn't find a matching director.
+      <%end%>
     </td>
 
     <td>

@@ -3,10 +3,6 @@
   <h1>Movie #<%=@the_movie.id%> details</h1>
 <%end%>
 
-<h1>
-  Movie #<%= @the_movie.id %> details
-</h1>
-
 <a href="/movies">Go back</a><br>
 <a href="/delete_movie/<%=@the_movie.id%>">Delete movie</a>
 
@@ -37,7 +33,7 @@
 
     <div>
       <label for="image_box">Image</label>
-      <input type="text" id="image_box" name="query_description" value ="<%=@the_movie.image%>">
+      <input type="text" id="image_box" name="query_image" value ="<%=@the_movie.image%>">
     </div>
 
     <div>
@@ -98,7 +94,11 @@
     
     <% the_director = matching_directors.at(0) %>
 
-    <%= the_director.name %>
+    <%if the_director%>
+        <%=the_director.name%>
+    <%else%>
+      Uh oh! We couldn't find a matching director.
+    <%end%>
   </dd>
 
   <dt>
