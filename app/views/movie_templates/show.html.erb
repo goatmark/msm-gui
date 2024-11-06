@@ -1,16 +1,14 @@
 <%params%>
+<%if params.fetch("path_id", "") != "delete"%>
+  <h1>Movie #<%=@the_movie.id%> details</h1>
+<%end%>
 
 <h1>
   Movie #<%= @the_movie.id %> details
 </h1>
 
-<a href="/movies">
-  Go back
-</a>
-<br>
-<a href="/movies/delete">
-  Delete movie
-</a>
+<a href="/movies">Go back</a><br>
+<a href="/movies/delete/<%=@the_movie.id%>">Delete movie</a>
 
 <hr>
 

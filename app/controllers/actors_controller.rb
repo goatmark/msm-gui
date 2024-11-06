@@ -55,13 +55,13 @@ class ActorsController < ApplicationController
 
   def delete
     
-    @actor_id = params.fetch("path_id","").to_i
+    @actor_id = params.fetch("actor_id","").to_i
 
-    # Read director row
+    # Read actor row
     a = Actor.all.where({:id => @actor_id})
 
-    # Push to database
-    a.delete
+    # Delete from database
+    a.destroy
 
     # Redirect
     redirect_to("/actors")

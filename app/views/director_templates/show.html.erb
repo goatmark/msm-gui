@@ -1,20 +1,10 @@
-<%=params%>
-<%if params.fetch("path_id", "") == "delete"%>
-  <h1>Delete</h1>
-<%else%>
-  <h1>
-    Director #<%=@the_director.id%> details
-  </h1>
+<%params%>
+<%if params.fetch("path_id", "") != "delete"%>
+  <h1>Director #<%=@the_director.id%> details</h1>
 <%end%>
 
-<a href="/directors">
-  Go back
-</a><br>
-
-<form action = "/directors/delete" method="post">
-  <input type="hidden" name="director_id" value="<%= params.fetch("path_id", "").to_i %>">
-  <a href="/directors/">Delete director</a>
-</form>
+<a href="/directors">Go back</a><br>
+<a href="/directors/delete/<%=@the_director.id%>">Delete director</a>
 
 <hr>
 

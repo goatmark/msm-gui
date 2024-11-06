@@ -1,13 +1,10 @@
-<h1>
-  Actor #<%= @the_actor.id %> details
-</h1>
+<%params%>
+<%if params.fetch("path_id", "") != "delete"%>
+  <h1>Actor #<%=@the_actor.id%> details</h1>
+<%end%>
 
-<a href="/actors">
-  Go back
-</a><br>
-<a href="/actors/delete">
-  Delete actor
-</a>
+<a href="/actors">Go back</a><br>
+<a href="/actors/delete/<%=@the_actor.id%>">Delete actor</a>
 
 <hr>
 

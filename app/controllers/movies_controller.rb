@@ -59,13 +59,13 @@ class MoviesController < ApplicationController
 
   def delete
     
-    @movie_id = params.fetch("path_id","").to_i
+    @movie_id = params.fetch("movie_id","").to_i
 
     # Read director row
-    d = Director.all.where({:id => @director_id})
+    m = Movie.all.where({:id => @movie_id})
 
     # Push to database
-    d.delete
+    m.destroy
 
     # Redirect
     redirect_to("/movies")
