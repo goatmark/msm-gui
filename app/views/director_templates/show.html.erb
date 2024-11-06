@@ -1,5 +1,8 @@
+<%params%>
+
+
 <h1>
-  Director #<%= @the_director.id %> details
+  Director #<%=@the_director.id%> details
 </h1>
 
 <a href="/directors">
@@ -13,6 +16,8 @@
 
 <form action="/directors/update" method="post">
   <div>
+
+    <input type="hidden" name="path_id" value="<%= @director_id %>">
     <label for="name_box">Name</label>
     <input type="text" id="name_box" name="query_name" value="<%=@the_director.name%>">
   </div>

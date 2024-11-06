@@ -9,7 +9,7 @@ class DirectorsController < ApplicationController
   def show
     the_id = params.fetch("path_id")
 
-    matching_directors = Director.where({ :id => the_id })
+    matching_directors = Director.all.where({ :id => the_id })
     @the_director = matching_directors.at(0)
 
     render({ :template => "director_templates/show" })
@@ -60,19 +60,19 @@ class DirectorsController < ApplicationController
     @director_id = params.fetch("path_id","").to_i
 
     # Read director row
-    d = Director.all.where({:id => @director_id})
+    @d = Director.all.where({:id => @director_id})
 
     # Retrieve inputs
-    d.name = params.fetch("query_name","")
-    d.dob = params.fetch("query_dob","")
-    d.bio = params.fetch("query_bio","")
-    d.image = params.fetch("query_image","")
+    @d.name = params.fetch("query_name","")
+    @d.dob = params.fetch("query_dob","")
+    @d.bio = params.fetch("query_bio","")
+    @d.image = params.fetch("query_image","")
 
     # Push to database
-    d.save
+    @d.save
 
     # Redirect
-    redirect_to("/directors/" + d.id)
+    redirect_to("/directors/" + @d.id)
   end
 
   def delete
@@ -80,10 +80,10 @@ class DirectorsController < ApplicationController
     @director_id = params.fetch("path_id","").to_i
 
     # Read director row
-    d = Director.all.where({:id => @director_id})
+    @d = Director.all.where({:id => @director_id})
 
     # Push to database
-    d.delete
+    @d.delete
 
     # Redirect
     redirect_to("/directors")
