@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post("/directors/update", { :controller => "directors", :action => "update" })
   
   # Delete Page
-  get("/directors/delete/:director_id", { :controller => "directors", :action => "delete" })
+  get("/delete_director/:director_id", { :controller => "directors", :action => "delete" })
   
 
   # Movies
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # POST Domains
   post("/movies/create", { :controller => "movies", :action => "create" })
   post("/movies/update", { :controller => "movies", :action => "update" })
-  get("/movies/delete/:movie_id", { :controller => "movies", :action => "delete" })
+  get("/delete_movie/:movie_id", { :controller => "movies", :action => "delete" })
   # Movies page
   get("/movies/:path_id", { :controller => "movies", :action => "show" })
 
@@ -37,6 +37,6 @@ Rails.application.routes.draw do
   post("/actors/create", { :controller => "actors", :action => "create" })
   post("/actors/update", { :controller => "actors", :action => "update" })
   
-  get("/actors/delete/:actor_id", { :controller => "actors", :action => "delete" })
+  get("/delete_actor/:actor_id", { :controller => "actors", :action => "delete" })
   get("/actors/:path_id", { :controller => "actors", :action => "show" })
 end
